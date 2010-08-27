@@ -5,10 +5,11 @@ begin
   data = Vanity::Metric.data(metric)
   min, max = data.map(&:last).minmax
   js = data.map { |date,value| "['#{date.to_time.httpdate}',#{value}]" }.join(",")
+
   %{<div class="chart"></div>
     <script type="text/javascript">
-    $(function(){Vanity.metric("#{h id.to_s}").plot([{label:"#{h metric.name}", data: [#{js}]}])})
-    </script>}
+    $(function(){Vanity.metric("#{h id.to_s}").plot([{label:"#{h metric.name}", data: [#{js.html_safe}]}])})
+    </script>}.html_safe
 rescue Exception=>ex
-  %{<div class="error">#{h ex.message}</div>}
+  %{<div class="error">#{h ex.message}</div>}.html_safe
 end %>

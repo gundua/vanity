@@ -24,3 +24,5 @@
 .vanity form#milestones label { margin-right: .5em }
 .vanity form#milestones input { vertical-align: bottom }
 .vanity .metric .marking.label { position: absolute; bottom: 2em; color: #c66; font-size: 80% }
+
+.metric_number{ font-size: 20px; font-weight: bold;}

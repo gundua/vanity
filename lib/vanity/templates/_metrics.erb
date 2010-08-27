@@ -6,8 +6,16 @@
   <% end %>
 </ul>
 <form id="milestones">
-  <% experiments.each do |id, experiment| %>
-    <label><input type="checkbox" name="milestone" data-start="<%= experiment.created_at.httpdate %>"
-      data-end="<%= (experiment.completed_at || Time.now).httpdate %>"><%=h experiment.name %></label>
-  <% end %>
+  <table border="0" cellspacing="5" cellpadding="5">    
+    <% experiments.each do |id, experiment| %>
+      <tr>
+        <td>
+          <input type="checkbox" name="milestone" data-start="<%= experiment.created_at.httpdate %>" data-end="<%= (experiment.completed_at || Time.now).httpdate %>">
+        </td>
+        <td>
+          <label><%=h experiment.name %></label>
+        </td>
+      </tr>
+    <% end %>  
+  </table>  
 </form>
